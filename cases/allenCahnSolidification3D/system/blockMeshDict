@@ -1,0 +1,151 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.0                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+convertToMeters 1;
+x_min -60;
+x_max 60;
+y_min -60;
+y_max 60;
+z_min -60;
+z_max 60;
+lx #calc "$x_max - $x_min";
+ly #calc "$y_max - $y_min";
+lz #calc "$z_max - $z_min";
+
+vertices
+(
+   ($x_min $y_min $z_min)
+    ($x_max $y_min $z_min)
+    ($x_max $y_max $z_min)
+    ($x_min $y_max $z_min)
+    ($x_min $y_min $z_max)
+    ($x_max $y_min $z_max)
+    ($x_max $y_max $z_max)
+    ($x_min $y_max $z_max)
+);
+
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) ($lx $ly $lz) simpleGrading (1 1 1)
+);
+
+edges
+(
+);
+
+//================ FOR ZERO-FLUX BOUNDARY CONDITIONS ============
+boundary
+(
+    /*
+    floor
+    {
+        type wall;
+        faces
+        (
+            (0 1 5 4)
+        );
+    }
+    
+    ceiling
+    {
+        type patch;
+        faces
+        (
+            (2 3 7 6)
+        );
+    }
+    */
+    
+    sideSolid
+    {
+        type wall;
+        faces
+        (
+            (0 1 5 4)
+            (2 3 7 6)
+            (0 3 2 1)
+            (0 4 7 3)
+            (4 5 6 7)
+            (1 2 6 5)
+        );
+    }
+    
+);
+
+mergePatchPairs
+(
+        
+);
+
+
+//================= FOR CYCLIC BOUNDARY CONDITIONS ==============
+// boundary
+// (
+//     top
+//     {
+//         type cyclic;
+//         neighbourPatch bottom;
+//         faces
+//         (
+//         
+//             (0 1 5 4)
+//         );
+//     }
+//     bottom
+//     {
+//         type cyclic;
+//         neighbourPatch top;
+//         faces
+//         (
+//             (2 3 7 6)
+//         );
+//      }
+//      left
+//      {
+// 	type cyclic;
+//         neighbourPatch right;
+// 	faces
+// 	(
+// 		(1 2 6 5)
+// 	);	
+//      }
+// 
+//      right
+//      {
+// 	type cyclic;
+//         neighbourPatch left;
+// 	faces
+// 	(
+//                 (0 4 7 3)
+// 	);	
+//      }
+//     
+// 
+//     frontAndBack
+//     {
+//         type empty;
+//         faces
+//         (
+//             (0 3 2 1)
+//             (4 5 6 7)
+//         );
+//     }
+// );
+// 
+// mergePatchPairs
+// (
+// );
+
+// ************************************************************************* //

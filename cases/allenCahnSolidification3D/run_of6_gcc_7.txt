@@ -1,0 +1,6 @@
+export HOME=/mnt/lustre/met2/username
+module unload craype-x86-skylake
+module load craype-haswell
+module load openfoam/6.0/gcc/7.3.0
+
+source /mnt/lustre/new_apps/cle7/openfoam/6.0/gcc/7.3.0/OpenFOAM-6/etc/bashrc WM_COMPILER_TYPE=system FOAMY_HEX_MESH=yes WM_LABEL_SIZE=32

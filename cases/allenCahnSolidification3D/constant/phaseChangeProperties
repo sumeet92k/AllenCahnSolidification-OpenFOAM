@@ -1,0 +1,36 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.0                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      phaseChangeProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+M    	M [0 0 0 0 0 0 0] 1;
+Cv    	Cv [0 0 0 0 0 0 0] 1;
+Lf    	Lf [0 0 0 0 0 0 0] 1;
+Kt    	Kt [0 0 0 0 0 0 0] 1;
+K    	K [0 0 0 0 0 0 0] 1;
+W	    W [0 0 0 0 0 0 0] 0.4; 
+Tm	    Tm [0 0 0 0 0 0 0] 1; 
+// kappa	kappa [0 0 0 0 0 0 0] 1;
+// gamma_01	gamma_01 [0 0 0 0 0 0 0] 1; 
+
+// omega	omega [0 0 0 0 0 0 0] 4;
+// epsilon	epsilon [0 0 0 0 0 0 0] 4;
+
+dim_t	dim_t [0 0 1 0 0 0 0] 1;
+dim_x1	dim_x1 [0 1 0 0 0 0 0] 1;
+dim_x2	dim_x2 [0 2 0 0 0 0 0] 1;
+
+
+// ************************************************************************* //
