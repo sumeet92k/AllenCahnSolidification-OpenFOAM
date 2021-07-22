@@ -8,4 +8,4 @@ Based upon the version of OpenFOAM, you may need to toggle commenting either of 
 // while (simple.loop())
 ```
 ### Case files
-The `cases` contains 2D and 3D case files. The job submission script is `cray_small.pbs` for submission to the cray cluster. In this file, change the name of the executable to the one generated above on compiling the solver. For parallel execution, have a look at the file `/system/decomposeParDict`.
+The `cases` contains 2D and 3D case files. The job submission script is `cray_small.pbs` for submission to the cray cluster. In this file, change the name of the executable to the one generated above on compiling the solver. For parallel execution, have a look at the file `system/decomposeParDict`.
