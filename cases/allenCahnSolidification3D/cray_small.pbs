@@ -1,0 +1,15 @@
+#!/bin/sh
+#PBS -N job_name
+#PBS -l select=2:ncpus=24       
+#PBS -l walltime=0:10:00
+#PBS -l place=scatter
+#PBS -S /bin/sh -V
+#PBS -S /bin/sh@sdb -V
+#PBS -l accelerator_type="None"
+
+. /opt/modules/default/init/sh
+cd $PBS_O_WORKDIR
+
+source /mnt/lustre/new_apps/cle7/openfoam/6.0/gcc/7.3.0/OpenFOAM-6/etc/bashrc WM_COMPILER_TYPE=system FOAMY_HEX_MESH=yes WM_LABEL_SIZE=32
+
+aprun -j1 -n 32 -N 24 FULL_PATH_OF_SOLVER -parallel > $PBS_O_WORKDIR/output.log
